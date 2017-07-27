@@ -1,4 +1,3 @@
-<!--repeat through the data-->
 <div *ngFor="let crib of cribs">
-  <h3>{{ crib.address }}</h3>
+  <app-crib-card [crib]="crib" class="col-sm-4"></app-crib-card>
 </div>
