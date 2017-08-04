@@ -1,20 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { CribsService } from './../services/cribs.service'
+import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-add-listing-form', //add to app.template
+  selector: 'app-add-listing-form', 
   templateUrl: './add-listing-form.component.html',
   styleUrls: ['./add-listing-form.component.css']
 })
 export class AddListingFormComponent implements OnInit {
 
+  @ViewChild('newCribForm') newCribForm: NgForm;
   propertyTypes: Array<string> = ['House', 'Condo', 'Duplex'];
-  constructor() { }
+  constructor(public cribsService:CribsService) { }
 
   ngOnInit() {
   }
 
-  onCribSubmit(data): void { //void - not returning anything from these method
-    console.log(data); 
+  onCribSubmit(data) { 
+    this.cribsService.addCrib(data);
+    this.newCribForm.reset();
   }
 }

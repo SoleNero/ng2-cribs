@@ -5,13 +5,7 @@
 
   <div class="panel-body">
 
-<!--template variable and setting it u to ngForm, this sets up top level form group.
-that lets us lots of possibilieties to manipulate and track the value, setting require etc-->
   <form #newCribForm="ngForm" (ngSubmit)="onCribSubmit(newCribForm.value)">
-    <!--we're taking the value that coming from newCribForm and those will be all of the values that exsist in the input elements.
-    ngSubmit is a event binding; when the submit button get click, will going to call 'onCribSubmit' method that 
-    we'll create in our component class; we're passing the values that come from the elements in our form, and this is
-    how we're access them (newCribForm.value)-->
     <div class="form-group col-sm-4">
       <label for="address" class="">Address</label>
       <input 
@@ -40,7 +34,6 @@ that lets us lots of possibilieties to manipulate and track the value, setting r
         class="form-control"
         ngModel
         required>
-        <!--ngFor repeater from Angular2-->
         <option 
         *ngFor="let type of propertyTypes"
         [value]="type">
@@ -82,8 +75,8 @@ that lets us lots of possibilieties to manipulate and track the value, setting r
     <div class="form-group col-sm-12">
       <button
       class="btn btn-primary listing-button"
-      type="submit">
-      <!--submit button is used by default to triger the ngSubmit event on top-->
+      type="submit"
+      ng-show="addListing">
       Add
       </button>
 
@@ -92,5 +85,3 @@ that lets us lots of possibilieties to manipulate and track the value, setting r
   </form>
  </div>
 </div>
-
-
